@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ou.dao.BookMapper">
+
+    <insert id="addBook" parameterType="Books">
+        insert into  books(bookName,bookCounts,detail)
+        values (#{bookName},#{bookCounts},#{detail});
+    </insert>
+
+    <delete id="deleteBookById" parameterType="Integer">
+        delete from books
+        where bookID=#{bookID};
+    </delete>
+    <update id="updateBook" >
+        update books
+        set bookName = #{bookName},bookCounts=#{bookCounts},detail=#{detail}
+        where bookID=#{bookID};
+    </update>
+
+
+    <select id="selectAllBook" resultType="com.ou.pojo.Books">
+        select * from books
+    </select>
+
+    <select id="selectBookById" resultType="com.ou.pojo.Books">
+        select * from books where bookID=#{bookID}
+    </select>
+    <select id="selectBookByName" resultType="com.ou.pojo.Books">
+        select * from books where bookName=#{bookName}
+    </select>
+</mapper>
